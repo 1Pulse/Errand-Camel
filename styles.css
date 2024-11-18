@@ -1,0 +1,99 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: navy;
+    line-height: 1.6;
+}
+
+.hero {
+    background-image: url('yellow.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(145, 69, 7);
+}
+
+
+.slogan {
+    font-size: 1.5rem;
+    font-style: normal;
+    color: rgb(32, 56, 133);
+}
+
+.cta-section {
+    display: flex;
+    justify-content: space-around;
+    background-color: skyblue;
+    padding: 20px;
+}
+
+
+.hero-content .logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.brand-name {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-family: 'Bauhaus 93', sans-serif;
+}
+
+
+.cta {
+    text-align: center;
+    background-color: mastered;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.products {
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product h3 {
+    margin: 10px 0;
+}
+
+.testimonials {
+    padding: 20px;
+    background-color: skyblue;
+    color: navy;
+}
+
+footer {
+    background-color: navy;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+
