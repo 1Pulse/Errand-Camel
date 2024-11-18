@@ -33,7 +33,7 @@ body {
 .cta-section {
     display: flex;
     justify-content: space-around;
-    background-color: skyblue;
+    background-color: #fcb62e;
     padding: 20px;
 }
 
@@ -53,16 +53,17 @@ body {
 
 .cta {
     text-align: center;
-    background-color: mastered;
+    background-color: #ffffff73;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: ;
 }
 
 .products {
     padding: 20px;
     text-align: center;
-    background-color: white;
+    background-color: #fcb62e;
 }
 
 .product-grid {
@@ -83,12 +84,12 @@ body {
 
 .testimonials {
     padding: 20px;
-    background-color: skyblue;
-    color: navy;
+    background-color: #fcb62e;
+    color: white;
 }
 
 footer {
-    background-color: navy;
+    background-color: #fcb62e;
     color: white;
     text-align: center;
     padding: 10px;
