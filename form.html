@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form to WhatsApp</title>
+  <script>
+    // Function to send data to WhatsApp
+    function sendToWhatsApp(event) {
+      event.preventDefault();  // Prevent the default form submission
+
+      // Get form data
+      const name = document.getElementById('name').value;
+      const surname = document.getElementById('surname').value;
+      const address = document.getElementById('address').value;
+      const vehicleRegistration = document.getElementById('vehicleRegistration').value;
+      const carColor = document.getElementById('carColor').value;
+
+      // WhatsApp number and message construction
+      const phoneNumber = "1234567890"; // Replace with your WhatsApp number
+      const message = encodeURIComponent(`Name: ${name}\nSurname: ${surname}\nAddress: ${address}\nVehicle Registration: ${vehicleRegistration}\nCar Color: ${carColor}`);
+
+      // Create the WhatsApp URL and open it
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
+</head>
+<body>
+  <h2>Contact Form</h2>
+  <form id="contactForm" onsubmit="sendToWhatsApp(event)">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="surname">Surname:</label><br>
+    <input type="text" id="surname" name="surname" required><br><br>
+
+    <label for="address">Address:</label><br>
+    <input type="text" id="address" name="address" required><br><br>
+
+    <label for="vehicleRegistration">Vehicle Registration:</label><br>
+    <input type="text" id="vehicleRegistration" name="vehicleRegistration" required><br><br>
+
+    <label for="carColor">Color of Car:</label><br>
+    <input type="text" id="carColor" name="carColor" required><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
