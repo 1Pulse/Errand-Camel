@@ -7,6 +7,138 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header .logo {
+  font-size: 1.5rem;
+}
+
+header .navigation a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+header .navigation a:hover {
+  text-decoration: underline;
+}
+
+main {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.car-photo img {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+
+.pricing {
+  margin-top: 20px;
+}
+
+.pricing .price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #e60000;
+}
+
+.pricing .monthly-payment {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.description {
+  margin-top: 20px;
+}
+
+.description ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.description li {
+  margin: 5px 0;
+}
+
+.car-specs {
+  margin-top: 20px;
+}
+
+.car-specs p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.rental-calculator {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.rental-calculator label {
+  display: block;
+  margin-top: 10px;
+}
+
+.rental-calculator input,
+.rental-calculator select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#calculated-results p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  margin-top: 40px;
+}
+
+</style>
   <header>
     <div class="logo">Autotrader Logo</div>
     <div class="navigation">
