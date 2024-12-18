@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental Listing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="logo">Autotrader Logo</div>
+    <div class="navigation">
+      <a href="#">Back to Results</a>
+      <a href="#">Next</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="car-details">
+      <h1>2012 Lexus GS 450h F-Sport for Rent</h1>
+      <div class="car-photo">
+        <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h F-Sport">
+      </div>
+
+      <div class="pricing">
+        <p class="price">R 349 900 per month</p>
+        <p class="monthly-payment">R 6 363 p/m</p>
+      </div>
+
+      <div class="description">
+        <p>The ride quality is excellent, as is NVH (noise, vibration, and harshness). The handling far exceeds what's expected from a car in this class. From a day-to-day perspective, the GS450h is an excellent car to live with. This vehicle is ideal for long-term rental and comes with the following features:</p>
+        <ul>
+          <li>Bluetooth connectivity</li>
+          <li>Keyless start</li>
+          <li>Electric windows</li>
+          <li>Navigation</li>
+          <li>Prices do not include delivery and on-the-road fees</li>
+          <li>Mileage may vary</li>
+          <li>Insurance and maintenance options available at an additional cost</li>
+        </ul>
+      </div>
+
+      <div class="car-specs">
+        <p><strong>Registration Year:</strong> 2012</p>
+        <p><strong>Mileage:</strong> 130 900 km</p>
+        <p><strong>Transmission:</strong> Automatic</p>
+        <p><strong>Fuel Type:</strong> Hybrid</p>
+        <p><strong>Available for Rent from:</strong> Lexus Fourways, Magaliessig</p>
+      </div>
+
+      <section class="rental-calculator">
+        <h2>Car Rental Calculator</h2>
+        <label for="rental-period">Rental Period (Months):</label>
+        <select id="rental-period">
+          <option value="12">12 months</option>
+          <option value="24">24 months</option>
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="72">72 months</option>
+        </select>
+
+        <label for="deposit">Deposit (R):</label>
+        <input type="number" id="deposit" value="34990">
+
+        <label for="insurance">Insurance Option (R):</label>
+        <input type="number" id="insurance" value="5000">
+
+        <button onclick="calculateRental()">Calculate</button>
+
+        <div id="calculated-results">
+          <p><strong>Estimated Monthly Rental:</strong> <span id="monthly-rental">R 6 363</span></p>
+          <p><strong>Total Cost of Rental:</strong> <span id="total-cost">R 458 148</span></p>
+          <p><strong>Total Deposit:</strong> <span id="total-deposit">R 34 990</span></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 AutoTrader South Africa</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
