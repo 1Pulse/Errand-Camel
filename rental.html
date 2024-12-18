@@ -212,6 +212,26 @@ footer {
     <p>© 2024 AutoTrader South Africa</p>
   </footer>
 
-  <script src="scripts.js"></script>
+  <script">
+function calculateRental() {
+  const rentalPeriod = parseInt(document.getElementById("rental-period").value);
+  const deposit = parseInt(document.getElementById("deposit").value);
+  const insurance = parseInt(document.getElementById("insurance").value);
+
+  // Base pricing data
+  const basePrice = 6363; // R 6 363 per month
+  const totalBaseCost = basePrice * rentalPeriod;
+
+  // Calculations
+  const totalDeposit = deposit;
+  const totalRentalCost = totalBaseCost + insurance * rentalPeriod;
+
+  // Update the result fields
+  document.getElementById("monthly-rental").textContent = `R ${basePrice.toLocaleString()}`;
+  document.getElementById("total-cost").textContent = `R ${totalRentalCost.toLocaleString()}`;
+  document.getElementById("total-deposit").textContent = `R ${totalDeposit.toLocaleString()}`;
+}
+
+</script>
 </body>
 </html>
