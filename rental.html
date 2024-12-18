@@ -221,6 +221,127 @@ footer {
         <p><strong>Fuel Type:</strong> Hybrid</p>
         <p><strong>Available for Rent from:</strong> Lexus Fourways, Magaliessig</p>
       </div>
+<section class="car-details-form">
+  <h1>2012 Lexus GS 450h F-Sport for Rent</h1>
+
+  <!-- Carousel for Car Images -->
+  <div class="carousel">
+    <div class="carousel-images">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 1" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 2" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 3" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 4" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 5" class="carousel-image">
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
+  <!-- Rental Form -->
+  <form id="car-rental-form" action="#" method="POST" enctype="multipart/form-data">
+    <div class="pricing">
+      <label for="monthly-price">Price:</label>
+      <input type="text" id="monthly-price" name="price" value="R 349 900 per month" readonly>
+
+      <label for="monthly-payment">Monthly Payment:</label>
+      <input type="text" id="monthly-payment" name="monthly_payment" value="R 6 363 p/m" readonly>
+    </div>
+
+    <div class="description">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" readonly>
+The ride quality is excellent, as is NVH (noise, vibration, and harshness). The handling far exceeds what's expected from a car in this class. From a day-to-day perspective, the GS450h is an excellent car to live with. This vehicle is ideal for long-term rental and comes with the following features:
+- Bluetooth connectivity
+- Keyless start
+- Electric windows
+- Navigation
+- Prices do not include delivery and on-the-road fees
+- Mileage may vary
+- Insurance and maintenance options available at an additional cost
+      </textarea>
+    </div>
+
+    <div class="car-specs">
+      <label for="registration-year">Registration Year:</label>
+      <input type="text" id="registration-year" name="registration_year" value="2012" readonly>
+
+      <label for="mileage">Mileage:</label>
+      <input type="text" id="mileage" name="mileage" value="130 900 km" readonly>
+
+      <label for="transmission">Transmission:</label>
+      <input type="text" id="transmission" name="transmission" value="Automatic" readonly>
+
+      <label for="fuel-type">Fuel Type:</label>
+      <input type="text" id="fuel-type" name="fuel_type" value="Hybrid" readonly>
+
+      <label for="rent-location">Available for Rent from:</label>
+      <input type="text" id="rent-location" name="rent_location" value="Lexus Fourways, Magaliessig" readonly>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="image-upload">
+      <label for="car-images">Upload images (up to 5 images):</label>
+      <input type="file" id="car-images" name="car_images[]" accept="image/*" multiple required>
+    </div>
+
+    <!-- Additional Options -->
+    <fieldset>
+      <legend>Additional Options</legend>
+      <label for="insurance-option">
+        <input type="checkbox" id="insurance-option" name="insurance" value="yes"> Insurance Option Available
+      </label><br>
+      <label for="maintenance-option">
+        <input type="checkbox" id="maintenance-option" name="maintenance" value="yes"> Maintenance Option Available
+      </label><br>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <button type="button" onclick="sendToWhatsApp()">Request Rental</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  // Carousel Functionality
+  let currentSlide = 0;
+
+  function moveSlide(step) {
+    const images = document.querySelectorAll('.carousel-image');
+    currentSlide = (currentSlide + step + images.length) % images.length;
+    images.forEach((img, index) => {
+      img.style.display = index === currentSlide ? 'block' : 'none';
+    });
+  }
+
+  // Initialize carousel
+  moveSlide(0);
+
+  // WhatsApp sharing function
+  function sendToWhatsApp() {
+    const form = document.getElementById("car-rental-form");
+    const formData = new FormData(form);
+
+    let message = `Car Rental Request:\n\n`;
+    message += `Price: R 349 900 per month\n`;
+    message += `Monthly Payment: R 6 363 p/m\n`;
+    message += `Description: The ride quality is excellent, as is NVH. This vehicle comes with Bluetooth, keyless start, navigation, and more.\n`;
+    message += `Registration Year: 2012\n`;
+    message += `Mileage: 130 900 km\n`;
+    message += `Transmission: Automatic\n`;
+    message += `Fuel Type: Hybrid\n`;
+    message += `Available for Rent from: Lexus Fourways, Magaliessig\n`;
+
+    // Collect the uploaded image URLs (these would need to be uploaded somewhere, e.g., to a server, or you could use a third-party service)
+    message += `Images: (Please attach images manually)\n`;
+
+    // Create a link to WhatsApp
+    const whatsappLink = `https://wa.me/yourwhatsappphonenumber?text=${encodeURIComponent(message)}`;
+
+    // Redirect to WhatsApp (sending text and image instructions)
+    window.open(whatsappLink, "_blank");
+  }
+</script>
 
       <section class="rental-calculator">
         <h2>Car Rental Calculator</h2>
