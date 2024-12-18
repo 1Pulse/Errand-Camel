@@ -49,10 +49,43 @@ h1 {
   color: #333;
 }
 
-.car-photo img {
+.carousel {
+  position: relative;
   width: 100%;
   max-width: 600px;
   margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.carousel-image {
+  width: 100%;
+  max-width: 600px;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+  z-index: 2;
+}
+
+button.prev {
+  left: 0;
+}
+
+button.next {
+  right: 0;
 }
 
 .pricing {
@@ -105,8 +138,7 @@ h1 {
   margin-top: 10px;
 }
 
-.rental-calculator input,
-.rental-calculator select {
+.rental-calculator input {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -150,8 +182,18 @@ footer {
   <main>
     <section class="car-details">
       <h1>2012 Lexus GS 450h F-Sport for Rent</h1>
-      <div class="car-photo">
-        <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h F-Sport">
+      
+      <!-- Carousel for Car Images -->
+      <div class="carousel">
+        <div class="carousel-images">
+          <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 1" class="carousel-image">
+          <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 2" class="carousel-image">
+          <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 3" class="carousel-image">
+          <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 4" class="carousel-image">
+          <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 5" class="carousel-image">
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
       </div>
 
       <div class="pricing">
@@ -182,27 +224,17 @@ footer {
 
       <section class="rental-calculator">
         <h2>Car Rental Calculator</h2>
-        <label for="rental-period">Rental Period (Months):</label>
-        <select id="rental-period">
-          <option value="12">12 months</option>
-          <option value="24">24 months</option>
-          <option value="36">36 months</option>
-          <option value="48">48 months</option>
-          <option value="72">72 months</option>
-        </select>
+        <label for="rental-period">Rental Period (Days):</label>
+        <input type="number" id="rental-period" value="30" min="1">
 
-        <label for="deposit">Deposit (R):</label>
-        <input type="number" id="deposit" value="34990">
-
-        <label for="insurance">Insurance Option (R):</label>
+        <label for="insurance">Insurance (Monthly):</label>
         <input type="number" id="insurance" value="5000">
 
         <button onclick="calculateRental()">Calculate</button>
 
         <div id="calculated-results">
-          <p><strong>Estimated Monthly Rental:</strong> <span id="monthly-rental">R 6 363</span></p>
-          <p><strong>Total Cost of Rental:</strong> <span id="total-cost">R 458 148</span></p>
-          <p><strong>Total Deposit:</strong> <span id="total-deposit">R 34 990</span></p>
+          <p><strong>Estimated Insurance for Rental:</strong> <span id="insurance-cost">R 5,000</span></p>
+          <p><strong>Total Rental Cost:</strong> <span id="total-cost">R 6,363</span></p>
         </div>
       </section>
     </section>
@@ -212,24 +244,42 @@ footer {
     <p>© 2024 AutoTrader South Africa</p>
   </footer>
 
-  <script">
+  <script>
+let slideIndex = 0;
+
+// Show the first image in the carousel by default
+document.addEventListener('DOMContentLoaded', () => {
+  showSlide(slideIndex);
+});
+
+function moveSlide(n) {
+  slideIndex += n;
+  const images = document.querySelectorAll('.carousel-image');
+  if (slideIndex >= images.length) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = images.length - 1;
+  showSlide(slideIndex);
+}
+
+function showSlide(n) {
+  const slides = document.querySelector('.carousel-images');
+  const images = document.querySelectorAll('.carousel-image');
+  const width = images[0].clientWidth;
+  slides.style.transform = `translateX(${-n * width}px)`;
+}
+
 function calculateRental() {
   const rentalPeriod = parseInt(document.getElementById("rental-period").value);
-  const deposit = parseInt(document.getElementById("deposit").value);
   const insurance = parseInt(document.getElementById("insurance").value);
 
-  // Base pricing data
-  const basePrice = 6363; // R 6 363 per month
-  const totalBaseCost = basePrice * rentalPeriod;
+  // Insurance Calculation: insurance / 30 * days of hire
+  const insuranceCost = (insurance / 30) * rentalPeriod;
 
-  // Calculations
-  const totalDeposit = deposit;
-  const totalRentalCost = totalBaseCost + insurance * rentalPeriod;
+  // Base monthly rental (fixed value)
+  const basePrice = 6363;
 
   // Update the result fields
-  document.getElementById("monthly-rental").textContent = `R ${basePrice.toLocaleString()}`;
-  document.getElementById("total-cost").textContent = `R ${totalRentalCost.toLocaleString()}`;
-  document.getElementById("total-deposit").textContent = `R ${totalDeposit.toLocaleString()}`;
+  document.getElementById("insurance-cost").textContent = `R ${insuranceCost.toLocaleString()}`;
+  document.getElementById("total-cost").textContent = `R ${(basePrice + insuranceCost).toLocaleString()}`;
 }
 
 </script>
