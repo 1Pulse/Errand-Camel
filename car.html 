@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+    <link rel="stylesheet" href="cars.css">
+</head>
+<body>
+
+    <div class="car-details-container">
+        <!-- Car details will be dynamically populated here -->
+    </div>
+
+    <div class="form-container">
+        <h2>Book This Car</h2>
+        <form id="car-booking-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="surname" placeholder="Surname" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <input type="text" name="passport" placeholder="Passport" required>
+            <input type="text" name="id" placeholder="ID" required>
+            <input type="text" name="license" placeholder="License" required>
+            <button type="submit">Proceed</button>
+        </form>
+    </div>
+
+    <script src="cars.data.js"></script>
+    <script src="cars.js"></script>
+
+</body>
+</html>
