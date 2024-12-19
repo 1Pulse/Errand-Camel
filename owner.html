@@ -132,6 +132,14 @@
             width: 100%;
             box-sizing: border-box;
         }
+
+        #whatsappLink {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            font-size: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -263,7 +271,8 @@
             </div>
         </div>
 
-        <input type="submit" value="Submit Rental Info">
+        <input type="submit" value="Submit Rental Info" onclick="generateWhatsAppLink(); return false;">
+        <a href="#" id="whatsappLink" target="_blank" style="display:none;">Send to WhatsApp</a>
     </div>
 
     <script>
@@ -324,6 +333,36 @@
             const dates = Array.from(selectedDatesDisplay.getElementsByClassName("selected-date"))
                 .map(dateTag => dateTag.innerHTML.split(" ")[0]);
             document.getElementById("datesAvailable").value = dates.join(", ");
+        }
+
+        // Generate WhatsApp Link
+        function generateWhatsAppLink() {
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const address = document.getElementById('address').value;
+            const dob = document.getElementById('dob').value;
+            const idNumber = document.getElementById('idNumber').value;
+            const licenseCode = document.getElementById('licenseCode').value;
+            const ownershipStatus = document.getElementById('ownershipStatus').value;
+            const employerName = document.getElementById('employerName').value;
+            const datesAvailable = document.getElementById('datesAvailable').value;
+            const carName = document.getElementById('carName').value;
+            const description = document.getElementById('description').value;
+            const rentalRate = document.getElementById('rentalRate').value;
+            const insuranceWaiver = document.getElementById('insuranceWaiver').value;
+            const contractFee = document.getElementById('contractFee').value;
+            const adminFee = document.getElementById('adminFee').value;
+            const deposit = document.getElementById('deposit').value;
+            const freeKilometers = document.getElementById('freeKilometers').value;
+            const ratePerHour = document.getElementById('ratePerHour').value;
+            const insurancePerDay = document.getElementById('insurancePerDay').value;
+
+            const message = `*Car Rental Info*\n\n*User Info:* \nName: ${name} ${surname}\nAddress: ${address}\nDate of Birth: ${dob}\nID Number: ${idNumber}\nLicense Code: ${licenseCode}\nOwnership Status: ${ownershipStatus}\nEmployer: ${employerName}\nDates Available: ${datesAvailable}\n\n*Car Info:* \nCar Model: ${carName}\nDescription: ${description}\nRental Rate (per day): ${rentalRate}\nInsurance Waiver: ${insuranceWaiver}\nContract Fee: ${contractFee}\nAdmin Fee: ${adminFee}\nDeposit: ${deposit}\nFree Kilometers: ${freeKilometers}\nRate per Hour: ${ratePerHour}\nInsurance per Day: ${insurancePerDay}`;
+
+            const whatsappLink = `https://wa.me/?text=${encodeURIComponent(message)}`;
+            const whatsappButton = document.getElementById('whatsappLink');
+            whatsappButton.href = whatsappLink;
+            whatsappButton.style.display = 'block';
         }
     </script>
 
