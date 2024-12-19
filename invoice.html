@@ -71,8 +71,9 @@
                 <img src="bank3-logo.png" alt="Bank 3">
                 <span>9101</span>
             </button>
-            <button class="button" onclick="openBankApp('https://www.fnb.co.za/business-banking/banking-channels/app-for-smartphone.html')">
-                <img src="https://www.fnb.co.za/business-banking/banking-channels/app-for-smartphone.html">
+            <!-- If you don't have an image, you can remove the <img> tag or use a default icon -->
+            <button class="button" onclick="openBankApp('bank4')">
+                <img src="https://example.com/default-logo.png" alt="Bank 4">
                 <span></span>
             </button>
         </div>
@@ -84,12 +85,17 @@
                 bank1: "bank1app://", // Replace with actual deep link
                 bank2: "bank2app://", // Replace with actual deep link
                 bank3: "bank3app://", // Replace with actual deep link
-                bank4: "bank4app://"  // Replace with actual deep link
+                bank4: "https://www.fnb.co.za/business-banking/banking-channels/app-for-smartphone.html" // URL for web redirection
             };
 
             const link = bankLinks[bank];
             if (link) {
-                window.location.href = link;  // This will open the banking app if installed
+                // Check if the link is a deep link or a URL
+                if (link.startsWith('http')) {
+                    window.open(link, '_blank'); // Open URL in a new tab
+                } else {
+                    window.location.href = link;  // This will open the banking app if installed
+                }
             } else {
                 alert("Banking app link not available!");
             }
