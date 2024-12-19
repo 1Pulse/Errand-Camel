@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Card Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .card h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .button img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Payment Methods</h2>
+        <div class="button-container">
+            <button class="button" onclick="openBankApp('bank1')">
+                <img src="bank1-logo.png" alt="Bank 1">
+                <span>1234</span>
+            </button>
+            <button class="button" onclick="openBankApp('bank2')">
+                <img src="bank2-logo.png" alt="Bank 2">
+                <span>5678</span>
+            </button>
+            <button class="button" onclick="openBankApp('bank3')">
+                <img src="bank3-logo.png" alt="Bank 3">
+                <span>9101</span>
+            </button>
+            <button class="button" onclick="openBankApp('bank4')">
+                <img src="bank4-logo.png" alt="Bank 4">
+                <span>1121</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openBankApp(bank) {
+            const bankLinks = {
+                bank1: "bank1app://", // Replace with actual deep link
+                bank2: "bank2app://", // Replace with actual deep link
+                bank3: "bank3app://", // Replace with actual deep link
+                bank4: "bank4app://"  // Replace with actual deep link
+            };
+
+            const link = bankLinks[bank];
+            if (link) {
+                window.location.href = link;  // This will open the banking app if installed
+            } else {
+                alert("Banking app link not available!");
+            }
+        }
+    </script>
+
+</body>
+</html>
