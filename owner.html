@@ -29,9 +29,27 @@
             box-sizing: border-box;
         }
 
-        h1, h2 {
+        h1 {
+            text-align: center;
             color: #333;
-            font-size: 1.5rem;
+        }
+
+        .section-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .section-content {
+            display: none;
+            padding: 20px;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
         }
 
         label {
@@ -55,6 +73,20 @@
 
         textarea {
             resize: vertical;
+        }
+
+        .progress-container {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            background-color: #4CAF50;
+            height: 100%;
+            width: 0;
+            border-radius: 10px;
         }
 
         input[type="submit"] {
@@ -96,22 +128,6 @@
             padding: 10px;
         }
 
-        /* Responsive Design for Larger Screens */
-        @media (min-width: 600px) {
-            .container {
-                padding: 30px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            input[type="submit"] {
-                font-size: 18px;
-            }
-        }
-
-        /* Ensures the form doesn't overflow */
         .form-group {
             width: 100%;
             box-sizing: border-box;
@@ -122,119 +138,162 @@
 
     <div class="container">
         <h1>Car Rental Information Form</h1>
-        <form id="carRentalForm">
-            <h2>User Information</h2>
-            
-            <div class="form-group">
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" required><br>
-            </div>
 
-            <div class="form-group">
-                <label for="surname">Surname:</label>
-                <input type="text" id="surname" name="surname" required><br>
-            </div>
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
 
-            <div class="form-group">
-                <label for="address">Home Address:</label>
-                <input type="text" id="address" name="address" required><br>
+        <!-- User Information Section -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('userInfo')">
+                User Information
             </div>
-
-            <div class="form-group">
-                <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" required><br>
-            </div>
-
-            <div class="form-group">
-                <label for="idNumber">ID Number:</label>
-                <input type="text" id="idNumber" name="idNumber" required><br>
-            </div>
-
-            <div class="form-group">
-                <label for="licenseCode">License Code:</label>
-                <input type="text" id="licenseCode" name="licenseCode" required><br>
-            </div>
-
-            <div class="form-group">
-                <label for="ownershipStatus">Ownership Status:</label>
-                <select id="ownershipStatus" name="ownershipStatus">
-                    <option value="owner">Owner</option>
-                    <option value="agent">Agent</option>
-                    <option value="3rdParty">3rd Party</option>
-                </select><br>
-            </div>
-
-            <div class="form-group">
-                <label for="datesAvailable">Dates Available (select dates):</label>
-                <div class="dates-container">
-                    <input type="date" id="datePicker" class="date-picker">
-                    <button type="button" id="addDateButton">Add Date</button>
+            <div class="section-content" id="userInfo">
+                <div class="form-group">
+                    <label for="name">First Name:</label>
+                    <input type="text" id="name" name="name" required><br>
                 </div>
-                <div id="selectedDatesDisplay"></div>
-            </div>
 
-            <div class="form-group">
-                <label for="employerName">Employer Name:</label>
-                <input type="text" id="employerName" name="employerName" required><br>
-            </div>
+                <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" required><br>
+                </div>
 
-            <h2>Car Information</h2>
-            
-            <div class="form-group">
-                <label for="carName">Car Name/Model:</label>
-                <input type="text" id="carName" name="carName" required><br>
-            </div>
+                <div class="form-group">
+                    <label for="address">Home Address:</label>
+                    <input type="text" id="address" name="address" required><br>
+                </div>
 
-            <div class="form-group">
-                <label for="description">Car Description:</label>
-                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required><br>
+                </div>
 
-            <div class="form-group">
-                <label for="rentalRate">Rental Rate (per day):</label>
-                <input type="number" id="rentalRate" name="rentalRate" required><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="idNumber">ID Number:</label>
+                    <input type="text" id="idNumber" name="idNumber" required><br>
+                </div>
 
-            <div class="form-group">
-                <label for="insuranceWaiver">Insurance Waiver:</label>
-                <input type="number" id="insuranceWaiver" name="insuranceWaiver" required><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="licenseCode">License Code:</label>
+                    <input type="text" id="licenseCode" name="licenseCode" required><br>
+                </div>
 
-            <div class="form-group">
-                <label for="contractFee">Contract Fee:</label>
-                <input type="number" id="contractFee" name="contractFee" required><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="ownershipStatus">Ownership Status:</label>
+                    <select id="ownershipStatus" name="ownershipStatus">
+                        <option value="owner">Owner</option>
+                        <option value="agent">Agent</option>
+                        <option value="3rdParty">3rd Party</option>
+                    </select><br>
+                </div>
 
-            <div class="form-group">
-                <label for="adminFee">Admin Fee:</label>
-                <input type="number" id="adminFee" name="adminFee" required><br><br>
-            </div>
+                <div class="form-group">
+                    <label for="datesAvailable">Dates Available (select dates):</label>
+                    <div class="dates-container">
+                        <input type="date" id="datePicker" class="date-picker">
+                        <button type="button" id="addDateButton">Add Date</button>
+                    </div>
+                    <div id="selectedDatesDisplay"></div>
+                </div>
 
-            <div class="form-group">
-                <label for="deposit">Deposit:</label>
-                <input type="number" id="deposit" name="deposit" required><br><br>
+                <div class="form-group">
+                    <label for="employerName">Employer Name:</label>
+                    <input type="text" id="employerName" name="employerName" required><br>
+                </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="freeKilometers">Free Kilometers (per day):</label>
-                <input type="number" id="freeKilometers" name="freeKilometers" required><br><br>
+        <!-- Car Information Section -->
+        <div class="section">
+            <div class="section-header" onclick="toggleSection('carInfo')">
+                Car Information
             </div>
+            <div class="section-content" id="carInfo">
+                <div class="form-group">
+                    <label for="carName">Car Name/Model:</label>
+                    <input type="text" id="carName" name="carName" required><br>
+                </div>
 
-            <div class="form-group">
-                <label for="ratePerHour">Rate per Hour:</label>
-                <input type="number" id="ratePerHour" name="ratePerHour" required><br><br>
+                <div class="form-group">
+                    <label for="description">Car Description:</label>
+                    <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="rentalRate">Rental Rate (per day):</label>
+                    <input type="number" id="rentalRate" name="rentalRate" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="insuranceWaiver">Insurance Waiver:</label>
+                    <input type="number" id="insuranceWaiver" name="insuranceWaiver" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="contractFee">Contract Fee:</label>
+                    <input type="number" id="contractFee" name="contractFee" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="adminFee">Admin Fee:</label>
+                    <input type="number" id="adminFee" name="adminFee" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="deposit">Deposit:</label>
+                    <input type="number" id="deposit" name="deposit" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="freeKilometers">Free Kilometers (per day):</label>
+                    <input type="number" id="freeKilometers" name="freeKilometers" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="ratePerHour">Rate per Hour:</label>
+                    <input type="number" id="ratePerHour" name="ratePerHour" required><br><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="insurancePerDay">Insurance per Day:</label>
+                    <input type="number" id="insurancePerDay" name="insurancePerDay" required><br><br>
+                </div>
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="insurancePerDay">Insurance per Day:</label>
-                <input type="number" id="insurancePerDay" name="insurancePerDay" required><br><br>
-            </div>
-
-            <input type="submit" value="Submit Rental Info">
-        </form>
+        <input type="submit" value="Submit Rental Info">
     </div>
 
     <script>
+        let completedSections = 0;
+
+        // Toggle visibility of each section
+        function toggleSection(sectionId) {
+            const sectionContent = document.getElementById(sectionId);
+            const isVisible = sectionContent.style.display === 'block';
+
+            // Close all sections
+            const allSections = document.querySelectorAll('.section-content');
+            allSections.forEach(section => section.style.display = 'none');
+
+            // Open the clicked section
+            sectionContent.style.display = isVisible ? 'none' : 'block';
+
+            updateProgress();
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const totalSections = document.querySelectorAll('.section').length;
+            const filledSections = Array.from(document.querySelectorAll('.section-content'))
+                .filter(section => section.style.display === 'block').length;
+
+            const progressPercentage = (filledSections / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progressPercentage + '%';
+        }
+
         // Date selection logic
         document.getElementById("addDateButton").onclick = function() {
             const dateInput = document.getElementById("datePicker");
@@ -266,45 +325,6 @@
                 .map(dateTag => dateTag.innerHTML.split(" ")[0]);
             document.getElementById("datesAvailable").value = dates.join(", ");
         }
-
-        document.getElementById("carRentalForm").onsubmit = function(event) {
-            event.preventDefault();
-
-            // Collect form data
-            const formData = new FormData(event.target);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
-
-            // Create a WhatsApp message URL with the form data
-            const message = `
-                Name: ${formObject.name} ${formObject.surname}
-                \nHome Address: ${formObject.address}
-                \nDate of Birth: ${formObject.dob}
-                \nID Number: ${formObject.idNumber}
-                \nLicense Code: ${formObject.licenseCode}
-                \nOwnership Status: ${formObject.ownershipStatus}
-                \nDates Available: ${formObject.datesAvailable}
-                \nEmployer Name: ${formObject.employerName}
-                \nCar Model: ${formObject.carName}
-                \nDescription: ${formObject.description}
-                \nRental Rate: ${formObject.rentalRate}
-                \nInsurance Waiver: ${formObject.insuranceWaiver}
-                \nContract Fee: ${formObject.contractFee}
-                \nAdmin Fee: ${formObject.adminFee}
-                \nDeposit: ${formObject.deposit}
-                \nFree Kilometers: ${formObject.freeKilometers}
-                \nRate per Hour: ${formObject.ratePerHour}
-                \nInsurance per Day: ${formObject.insurancePerDay}
-            `;
-
-            const phoneNumber = 'YOUR_PHONE_NUMBER'; // Replace with your WhatsApp number
-            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-
-            // Redirect to WhatsApp
-            window.open(url, "_blank");
-        };
     </script>
 
 </body>
