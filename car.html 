@@ -63,7 +63,9 @@
     <div id="car-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <img id="modal-car-image" src="" alt="Car Image" style="width: 100%; height: auto;">
+<img id="modal-car-image" src="" alt="Car Image" style="width: 100%; height: auto;">
+
+       
             <h2 id="modal-car-name"></h2>
             <p id="modal-car-description"></p>
 
