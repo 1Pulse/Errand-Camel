@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Gallery</title>
+    <link rel="stylesheet" href="cars.css">
+</head>
+<body>
+
+    <div class="gallery-container">
+        <!-- Gallery Images will be dynamically populated here -->
+    </div>
+
+    <!-- Modal for Car Details -->
+    <div id="car-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modal-car-image" src="" alt="Car Image">
+            <h2 id="modal-car-name"></h2>
+            <p id="modal-car-description"></p>
+            <div id="rental-fee-breakdown"></div>
+            <button id="order-now-btn">Order Now</button>
+        </div>
+    </div>
+
+    <script src="cars.data.js"></script>
+    <script src="gallery.js"></script>
+
+</body>
+</html>
