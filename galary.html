@@ -24,7 +24,7 @@
     </div>
 
     <script>
-        // Sample data for cars
+        // Sample data for cars, including image URLs
         const carsData = [
             {
                 id: 1,
@@ -38,7 +38,8 @@
                 deposit: 3000,
                 freeKilometers: 200,
                 ratePerHour: 350,
-                insurancePerDay: 40
+                insurancePerDay: 40,
+                imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wallpics.net%2Fwp-content%2Fuploads%2F2017%2F12%2FToyota-Corolla-images-scaled.jpg&f=1&nofb=1&ipt="
             },
             {
                 id: 2,
@@ -52,14 +53,27 @@
                 deposit: 5000,
                 freeKilometers: 150,
                 ratePerHour: 400,
-                insurancePerDay: 50
+                insurancePerDay: 50,
+                imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F39%2Fb7%2F52%2F39b752efca78f2236cef542c316a5b3a.jpg&f=1&nofb=1&ipt=aaa9304d"
             }
             // Add more car data as needed
         ];
+
+
+carsData.forEach(car => {
+    const carElement = document.createElement('div');
+    carElement.classList.add('car-item');
+    carElement.innerHTML = `
+        <img src="${car.imageUrl}" alt="${car.name}">
+        <h3>${car.name}</h3>
+        <p>${car.description}</p>
+        <button class="view-details" data-id="${car.id}">View Details</button>
+    `;
+    document.querySelector('.gallery-container').appendChild(carElement);
+});
+
     </script>
 
-    <script"></script>
-    <script></script>
 
 </body>
 </html>
