@@ -71,20 +71,46 @@
 
         form input, select, button, textarea {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        form input[type="number"], form input[type="text"] {
+            font-family: 'Arial', sans-serif;
+        }
+
+        form textarea {
+            height: 100px;
+            resize: none;
         }
 
         button {
             background-color: #007BFF;
             color: #fff;
             cursor: pointer;
+            font-size: 16px;
+            padding: 14px;
         }
 
         button:hover {
             background-color: #0056b3;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* Error Styling */
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -8px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -108,10 +134,10 @@
             <!-- Section 2: User Inputs -->
             <div id="user-inputs">
                 <label for="days-rent">Number of Days:</label>
-                <input type="number" id="days-rent" min="1" value="1">
+                <input type="number" id="days-rent" min="1" value="1" required>
 
                 <label for="coverage">Coverage:</label>
-                <select id="coverage">
+                <select id="coverage" required>
                     <option value="250">Minimum Coverage (R250)</option>
                     <option value="800">Maximum Coverage (R800)</option>
                 </select>
@@ -126,19 +152,33 @@
 
             <!-- Section 3: User Information Form -->
             <div id="user-info-form" style="display: none;">
-                <label for="full-name">Full Name:</label>
-                <input type="text" id="full-name">
+                <div class="form-container">
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" required>
 
-                <label for="id-number">ID Number:</label>
-                <input type="text" id="id-number">
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" required>
 
-                <label for="license-number">License Number:</label>
-                <input type="text" id="license-number">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
 
-                <label for="license-code">License Code:</label>
-                <input type="text" id="license-code">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" required>
 
-                <button id="proceed-btn">Proceed</button>
+                    <label for="work-address">Work Address:</label>
+                    <input type="text" id="work-address" required>
+
+                    <label for="company-name">Company Name:</label>
+                    <input type="text" id="company-name" required>
+
+                    <label for="company-contact">Company/Employee Contact (ID):</label>
+                    <input type="text" id="company-contact" required>
+
+                    <label for="license-number">License Number:</label>
+                    <input type="text" id="license-number" required>
+
+                    <button id="proceed-btn">Proceed</button>
+                </div>
             </div>
 
             <!-- WhatsApp Integration -->
@@ -195,27 +235,26 @@
         // Get modal elements
         const modal = document.getElementById('car-modal');
         const closeModal = document.querySelector('.close-modal');
-        let currentCar = null;
 
         // Show modal with car details
         document.querySelectorAll('.view-details').forEach(button => {
             button.addEventListener('click', function() {
                 const carId = this.getAttribute('data-id');
-                currentCar = carsData.find(car => car.id == carId);
+                const car = carsData.find(car => car.id == carId);
 
                 // Set modal content
-                document.getElementById('modal-car-image').src = currentCar.imageUrl;
-                document.getElementById('modal-car-name').textContent = currentCar.name;
-                document.getElementById('modal-car-description').textContent = currentCar.description;
+                document.getElementById('modal-car-image').src = car.imageUrl;
+                document.getElementById('modal-car-name').textContent = car.name;
+                document.getElementById('modal-car-description').textContent = car.description;
                 document.getElementById('rental-fee-breakdown').innerHTML = `
-                    <p><strong>Rental Rate:</strong> R${currentCar.rentalRate}/day</p>
-                    <p><strong>Insurance Waiver:</strong> R${currentCar.insuranceWaiver}</p>
-                    <p><strong>Contract Fee:</strong> R${currentCar.contractFee}</p>
-                    <p><strong>Admin Fee:</strong> R${currentCar.adminFee}</p>
-                    <p><strong>Deposit:</strong> R${currentCar.deposit}</p>
-                    <p><strong>Free Kilometers:</strong> ${currentCar.freeKilometers} km</p>
-                    <p><strong>Rate Per Hour:</strong> R${currentCar.ratePerHour}</p>
-                    <p><strong>Insurance Per Day:</strong> R${currentCar.insurancePerDay}</p>
+                    <p><strong>Rental Rate:</strong> R${car.rentalRate}/day</p>
+                    <p><strong>Insurance Waiver:</strong> R${car.insuranceWaiver}</p>
+                    <p><strong>Contract Fee:</strong> R${car.contractFee}</p>
+                    <p><strong>Admin Fee:</strong> R${car.adminFee}</p>
+                    <p><strong>Deposit:</strong> R${car.deposit}</p>
+                    <p><strong>Free Kilometers:</strong> ${car.freeKilometers} km</p>
+                    <p><strong>Rate Per Hour:</strong> R${car.ratePerHour}</p>
+                    <p><strong>Insurance Per Day:</strong> R${car.insurancePerDay}</p>
                 `;
 
                 // Show the modal
@@ -237,10 +276,11 @@
 
         // Calculate total rental cost
         document.getElementById('calculate-btn').addEventListener('click', function() {
+            const carId = document.querySelector('.view-details').getAttribute('data-id');
+            const car = carsData.find(car => car.id == carId);
             const days = document.getElementById('days-rent').value;
-            const coverage = parseInt(document.getElementById('coverage').value);
-            
-            const total = (currentCar.rentalRate * days) + (currentCar.insurancePerDay * days) + currentCar.insuranceWaiver + currentCar.contractFee + currentCar.adminFee + currentCar.deposit + coverage;
+            const coverage = document.getElementById('coverage').value;
+            const total = car.rentalRate * days + parseInt(coverage) + car.insuranceWaiver + car.contractFee + car.adminFee + car.deposit;
 
             // Show calculated total
             document.getElementById('calculated-total').style.display = 'block';
@@ -250,30 +290,36 @@
 
         // WhatsApp message proceed
         document.getElementById('proceed-btn').addEventListener('click', function() {
+            // Validate form inputs
             const fullName = document.getElementById('full-name').value;
-            const idNumber = document.getElementById('id-number').value;
+            const address = document.getElementById('address').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const workAddress = document.getElementById('work-address').value;
+            const companyName = document.getElementById('company-name').value;
+            const companyContact = document.getElementById('company-contact').value;
             const licenseNumber = document.getElementById('license-number').value;
-            const licenseCode = document.getElementById('license-code').value;
-
-            const days = document.getElementById('days-rent').value;
-            const coverage = document.getElementById('coverage').value;
-            const total = document.getElementById('final-cost').textContent;
+            
+            if (!fullName || !address || !email || !phone || !workAddress || !companyName || !companyContact || !licenseNumber) {
+                alert("All fields are required!");
+                return;
+            }
 
             const message = `Car Rental Details:
-            \nCar: ${currentCar.name}
+            \nCar: ${car.name}
             \nDays: ${days}
             \nCoverage: R${coverage}
-            \nInsurance Waiver: R${currentCar.insuranceWaiver}
-            \nContract Fee: R${currentCar.contractFee}
-            \nAdmin Fee: R${currentCar.adminFee}
-            \nDeposit: R${currentCar.deposit}
             \nTotal: R${total}
-            \nName: ${fullName}
-            \nID: ${idNumber}
-            \nLicense: ${licenseNumber}
-            \nLicense Code: ${licenseCode}`;
+            \nFull Name: ${fullName}
+            \nAddress: ${address}
+            \nEmail: ${email}
+            \nPhone: ${phone}
+            \nWork Address: ${workAddress}
+            \nCompany Name: ${companyName}
+            \nCompany Contact: ${companyContact}
+            \nLicense Number: ${licenseNumber}`;
 
-            // Send message to WhatsApp
+            document.getElementById('whatsapp-message').value = message;
             window.location.href = `https://wa.me/27685090669?text=${encodeURIComponent(message)}`;
         });
     </script>
