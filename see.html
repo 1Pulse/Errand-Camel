@@ -1,0 +1,127 @@
+<section class="car-details-form">
+  <h1>2012 Lexus GS 450h F-Sport for Rent</h1>
+
+  <!-- Carousel for Car Images -->
+  <div class="carousel">
+    <div class="carousel-images">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 1" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 2" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 3" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 4" class="carousel-image">
+      <img src="https://via.placeholder.com/600x400" alt="Lexus GS 450h Image 5" class="carousel-image">
+    </div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
+  <!-- Rental Form -->
+  <form id="car-rental-form">
+    <div class="pricing">
+      <label for="monthly-price">Price:</label>
+      <input type="text" id="monthly-price" name="price" value="R 349 900 per month" readonly>
+
+      <label for="monthly-payment">Monthly Payment:</label>
+      <input type="text" id="monthly-payment" name="monthly_payment" value="R 6 363 p/m" readonly>
+    </div>
+
+    <div class="description">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" rows="4" readonly>
+The ride quality is excellent, as is NVH (noise, vibration, and harshness). The handling far exceeds what's expected from a car in this class. From a day-to-day perspective, the GS450h is an excellent car to live with. This vehicle is ideal for long-term rental and comes with the following features:
+- Bluetooth connectivity
+- Keyless start
+- Electric windows
+- Navigation
+- Prices do not include delivery and on-the-road fees
+- Mileage may vary
+- Insurance and maintenance options available at an additional cost
+      </textarea>
+    </div>
+
+    <div class="car-specs">
+      <label for="registration-year">Registration Year:</label>
+      <input type="text" id="registration-year" name="registration_year" value="2012" readonly>
+
+      <label for="mileage">Mileage:</label>
+      <input type="text" id="mileage" name="mileage" value="130 900 km" readonly>
+
+      <label for="transmission">Transmission:</label>
+      <input type="text" id="transmission" name="transmission" value="Automatic" readonly>
+
+      <label for="fuel-type">Fuel Type:</label>
+      <input type="text" id="fuel-type" name="fuel_type" value="Hybrid" readonly>
+
+      <label for="rent-location">Available for Rent from:</label>
+      <input type="text" id="rent-location" name="rent_location" value="Lexus Fourways, Magaliessig" readonly>
+    </div>
+
+    <!-- Additional Options -->
+    <fieldset>
+      <legend>Additional Options</legend>
+      <label for="insurance-option">
+        <input type="checkbox" id="insurance-option" name="insurance" value="yes"> Insurance Option Available
+      </label><br>
+      <label for="maintenance-option">
+        <input type="checkbox" id="maintenance-option" name="maintenance" value="yes"> Maintenance Option Available
+      </label><br>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <button type="button" onclick="sendToWhatsApp()">Request Rental</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  // Carousel Functionality
+  let currentSlide = 0;
+
+  function moveSlide(step) {
+    const images = document.querySelectorAll('.carousel-image');
+    currentSlide = (currentSlide + step + images.length) % images.length;
+    images.forEach((img, index) => {
+      img.style.display = index === currentSlide ? 'block' : 'none';
+    });
+  }
+
+  // Initialize carousel
+  moveSlide(0);
+
+  // WhatsApp sharing function
+  function sendToWhatsApp() {
+    const form = document.getElementById("car-rental-form");
+
+    // Collecting form data
+    const price = form.price.value;
+    const monthlyPayment = form.monthly_payment.value;
+    const description = form.description.value.replace(/\n/g, "%0A");
+    const registrationYear = form.registration_year.value;
+    const mileage = form.mileage.value;
+    const transmission = form.transmission.value;
+    const fuelType = form.fuel_type.value;
+    const rentLocation = form.rent_location.value;
+    const insurance = form.insurance_option.checked ? "Insurance Option Available" : "";
+    const maintenance = form.maintenance_option.checked ? "Maintenance Option Available" : "";
+
+    // Build the message to send
+    let message = `*Car Rental Request:*\n\n`;
+    message += `Price: ${price}\n`;
+    message += `Monthly Payment: ${monthlyPayment}\n`;
+    message += `Description: ${description}\n`;
+    message += `Registration Year: ${registrationYear}\n`;
+    message += `Mileage: ${mileage}\n`;
+    message += `Transmission: ${transmission}\n`;
+    message += `Fuel Type: ${fuelType}\n`;
+    message += `Available for Rent from: ${rentLocation}\n`;
+    if (insurance) message += `${insurance}\n`;
+    if (maintenance) message += `${maintenance}\n`;
+
+    // WhatsApp link
+    const whatsappNumber = "+27685090669"; // The phone number to send the message to
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp with the pre-filled message
+    window.open(whatsappLink, "_blank");
+  }
+</script>
