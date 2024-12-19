@@ -147,21 +147,61 @@ button:hover {
             // Add more car data as needed
         ];
 
+        // Populating the car gallery
+        carsData.forEach(car => {
+            const carElement = document.createElement('div');
+            carElement.classList.add('car-item');
+            carElement.innerHTML = `
+                <img src="${car.imageUrl}" alt="${car.name}">
+                <h3>${car.name}</h3>
+                <p>${car.description}</p>
+                <button class="view-details" data-id="${car.id}">View Details</button>
+            `;
+            document.querySelector('.gallery-container').appendChild(carElement);
+        });
 
-carsData.forEach(car => {
-    const carElement = document.createElement('div');
-    carElement.classList.add('car-item');
-    carElement.innerHTML = `
-        <img src="${car.imageUrl}" alt="${car.name}">
-        <h3>${car.name}</h3>
-        <p>${car.description}</p>
-        <button class="view-details" data-id="${car.id}">View Details</button>
-    `;
-    document.querySelector('.gallery-container').appendChild(carElement);
-});
+        // Get modal elements
+        const modal = document.getElementById('car-modal');
+        const closeModal = document.querySelector('.close-modal');
 
+        // Show modal with car details
+        document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const carId = this.getAttribute('data-id');
+                const car = carsData.find(car => car.id == carId);
+
+                // Set modal content
+                document.getElementById('modal-car-image').src = car.imageUrl;
+                document.getElementById('modal-car-name').textContent = car.name;
+                document.getElementById('modal-car-description').textContent = car.description;
+                document.getElementById('rental-fee-breakdown').innerHTML = `
+                    <p><strong>Rental Rate:</strong> $${car.rentalRate}/day</p>
+                    <p><strong>Insurance Waiver:</strong> $${car.insuranceWaiver}</p>
+                    <p><strong>Contract Fee:</strong> $${car.contractFee}</p>
+                    <p><strong>Admin Fee:</strong> $${car.adminFee}</p>
+                    <p><strong>Deposit:</strong> $${car.deposit}</p>
+                    <p><strong>Free Kilometers:</strong> ${car.freeKilometers} km</p>
+                    <p><strong>Rate Per Hour:</strong> $${car.ratePerHour}</p>
+                    <p><strong>Insurance Per Day:</strong> $${car.insurancePerDay}</p>
+                `;
+
+                // Show the modal
+                modal.style.display = "block";
+            });
+        });
+
+        // Close the modal when the user clicks the close button (×)
+        closeModal.addEventListener('click', function() {
+            modal.style.display = "none";
+        });
+
+        // Close the modal if the user clicks outside of the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
     </script>
-
 
 </body>
 </html>
