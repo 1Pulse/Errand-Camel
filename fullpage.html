@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Breakdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+.option {
+    background-color: #f4f4f4;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+h2, h3 {
+    color: #333;
+}
+
+.select-button, .add-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.select-button:hover, .add-button:hover {
+    background-color: #218838;
+}
+
+.navigation {
+    margin-top: 30px;
+}
+
+.navigation .cta-button {
+    background-color: #17a2b8;
+    margin-top: 10px;
+}
+
+</style>
+    <div class="container">
+        <h1>Rental Breakdown</h1>
+
+        <div class="option">
+            <h2>Lower Deposit, Lower Liability (Best Value)</h2>
+            <p>Price: <strong>ZAR 20.00</strong> Per Day</p>
+            <p>Liability: ZAR 16,000.00</p>
+            <button class="select-button">SELECT</button>
+        </div>
+
+        <div class="option">
+            <h2>Reduced Rental, Higher Deposit, Higher Liability (Higher Risk)</h2>
+            <p>Price: <strong>ZAR 0.00</strong> Per Day</p>
+            <p>Liability: Higher Liability - Terms Apply</p>
+            <button class="select-button">SELECT</button>
+        </div>
+
+        <h2>Extras</h2>
+
+        <div class="option">
+            <h3>Windscreen & Tyre Waiver</h3>
+            <p>Price: <strong>ZAR 50.00</strong> Per Day</p>
+            <button class="add-button">ADD</button>
+        </div>
+
+        <div class="option">
+            <h3>Additional Top-Up Mileage</h3>
+            <p>100 KM per day at ZAR 2.82 per KM (20% Discount)</p>
+            <p>Price: <strong>ZAR 296.00</strong> Per Day</p>
+            <button class="add-button">ADD</button>
+        </div>
+
+        <div class="navigation">
+            <a href="car_rental.html" class="cta-button">Back</a>
+            <a href="checkout.html" class="cta-button">Next</a>
+        </div>
+    </div>
+</body>
+</html>
