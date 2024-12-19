@@ -131,7 +131,7 @@
                 freeKilometers: 200,
                 ratePerHour: 350,
                 insurancePerDay: 40, 
-imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F39%2Fb7%2F52%2F39b752efca78f2236cef542c316a5b3a.jpg&f=1&nofb=1&ipt=aaa9304d" // Example 
+imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wallpics.net%2Fwp-content%2Fuploads%2F2017%2F12%2FToyota-Corolla-images-scaled.jpg&f=1&nofb=1&ipt=" // Example 
             },
             {
                 id: 2,
