@@ -208,7 +208,7 @@ imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.wallpi
                         \nLicense Code: ${licenseCode}`;
 
                         document.getElementById('whatsapp-message').value = message;
-                        window.location.href = `https://wa.me/your-number?text=${encodeURIComponent(message)}`;
+                        window.location.href = `https://wa.me/+27685090669?text=${encodeURIComponent(message)}`;
                     });
                 });
 
