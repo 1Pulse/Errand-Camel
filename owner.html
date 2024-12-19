@@ -16,6 +16,7 @@
             align-items: center;
             height: 100vh;
             padding: 20px;
+            box-sizing: border-box;
         }
 
         .container {
@@ -25,10 +26,12 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 600px;
+            box-sizing: border-box;
         }
 
         h1, h2 {
             color: #333;
+            font-size: 1.5rem;
         }
 
         label {
@@ -42,11 +45,12 @@
         textarea,
         select {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 5px;
             margin-bottom: 15px;
             border-radius: 5px;
             border: 1px solid #ddd;
+            box-sizing: border-box;
         }
 
         textarea {
@@ -88,10 +92,11 @@
         }
 
         .date-picker {
-            width: 120px;
+            width: 100%;
+            padding: 10px;
         }
 
-        /* Responsive Design: Adjust layout for larger screens */
+        /* Responsive Design for Larger Screens */
         @media (min-width: 600px) {
             .container {
                 padding: 30px;
@@ -105,6 +110,12 @@
                 font-size: 18px;
             }
         }
+
+        /* Ensures the form doesn't overflow */
+        .form-group {
+            width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
@@ -114,71 +125,110 @@
         <form id="carRentalForm">
             <h2>User Information</h2>
             
-            <label for="name">First Name:</label>
-            <input type="text" id="name" name="name" required><br>
-            
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname" required><br>
-            
-            <label for="address">Home Address:</label>
-            <input type="text" id="address" name="address" required><br>
-
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required><br>
-            
-            <label for="idNumber">ID Number:</label>
-            <input type="text" id="idNumber" name="idNumber" required><br>
-            
-            <label for="licenseCode">License Code:</label>
-            <input type="text" id="licenseCode" name="licenseCode" required><br>
-            
-            <label for="ownershipStatus">Ownership Status:</label>
-            <select id="ownershipStatus" name="ownershipStatus">
-                <option value="owner">Owner</option>
-                <option value="agent">Agent</option>
-                <option value="3rdParty">3rd Party</option>
-            </select><br>
-
-            <label for="datesAvailable">Dates Available (select dates):</label>
-            <div class="dates-container">
-                <input type="date" id="datePicker" class="date-picker">
-                <button type="button" id="addDateButton">Add Date</button>
+            <div class="form-group">
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" required><br>
             </div>
-            <div id="selectedDatesDisplay"></div>
 
-            <label for="employerName">Employer Name:</label>
-            <input type="text" id="employerName" name="employerName" required><br>
+            <div class="form-group">
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Home Address:</label>
+                <input type="text" id="address" name="address" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="idNumber">ID Number:</label>
+                <input type="text" id="idNumber" name="idNumber" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="licenseCode">License Code:</label>
+                <input type="text" id="licenseCode" name="licenseCode" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="ownershipStatus">Ownership Status:</label>
+                <select id="ownershipStatus" name="ownershipStatus">
+                    <option value="owner">Owner</option>
+                    <option value="agent">Agent</option>
+                    <option value="3rdParty">3rd Party</option>
+                </select><br>
+            </div>
+
+            <div class="form-group">
+                <label for="datesAvailable">Dates Available (select dates):</label>
+                <div class="dates-container">
+                    <input type="date" id="datePicker" class="date-picker">
+                    <button type="button" id="addDateButton">Add Date</button>
+                </div>
+                <div id="selectedDatesDisplay"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="employerName">Employer Name:</label>
+                <input type="text" id="employerName" name="employerName" required><br>
+            </div>
 
             <h2>Car Information</h2>
-            <label for="carName">Car Name/Model:</label>
-            <input type="text" id="carName" name="carName" required><br><br>
+            
+            <div class="form-group">
+                <label for="carName">Car Name/Model:</label>
+                <input type="text" id="carName" name="carName" required><br>
+            </div>
 
-            <label for="description">Car Description:</label>
-            <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+            <div class="form-group">
+                <label for="description">Car Description:</label>
+                <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
+            </div>
 
-            <label for="rentalRate">Rental Rate (per day):</label>
-            <input type="number" id="rentalRate" name="rentalRate" required><br><br>
+            <div class="form-group">
+                <label for="rentalRate">Rental Rate (per day):</label>
+                <input type="number" id="rentalRate" name="rentalRate" required><br><br>
+            </div>
 
-            <label for="insuranceWaiver">Insurance Waiver:</label>
-            <input type="number" id="insuranceWaiver" name="insuranceWaiver" required><br><br>
+            <div class="form-group">
+                <label for="insuranceWaiver">Insurance Waiver:</label>
+                <input type="number" id="insuranceWaiver" name="insuranceWaiver" required><br><br>
+            </div>
 
-            <label for="contractFee">Contract Fee:</label>
-            <input type="number" id="contractFee" name="contractFee" required><br><br>
+            <div class="form-group">
+                <label for="contractFee">Contract Fee:</label>
+                <input type="number" id="contractFee" name="contractFee" required><br><br>
+            </div>
 
-            <label for="adminFee">Admin Fee:</label>
-            <input type="number" id="adminFee" name="adminFee" required><br><br>
+            <div class="form-group">
+                <label for="adminFee">Admin Fee:</label>
+                <input type="number" id="adminFee" name="adminFee" required><br><br>
+            </div>
 
-            <label for="deposit">Deposit:</label>
-            <input type="number" id="deposit" name="deposit" required><br><br>
+            <div class="form-group">
+                <label for="deposit">Deposit:</label>
+                <input type="number" id="deposit" name="deposit" required><br><br>
+            </div>
 
-            <label for="freeKilometers">Free Kilometers (per day):</label>
-            <input type="number" id="freeKilometers" name="freeKilometers" required><br><br>
+            <div class="form-group">
+                <label for="freeKilometers">Free Kilometers (per day):</label>
+                <input type="number" id="freeKilometers" name="freeKilometers" required><br><br>
+            </div>
 
-            <label for="ratePerHour">Rate per Hour:</label>
-            <input type="number" id="ratePerHour" name="ratePerHour" required><br><br>
+            <div class="form-group">
+                <label for="ratePerHour">Rate per Hour:</label>
+                <input type="number" id="ratePerHour" name="ratePerHour" required><br><br>
+            </div>
 
-            <label for="insurancePerDay">Insurance per Day:</label>
-            <input type="number" id="insurancePerDay" name="insurancePerDay" required><br><br>
+            <div class="form-group">
+                <label for="insurancePerDay">Insurance per Day:</label>
+                <input type="number" id="insurancePerDay" name="insurancePerDay" required><br><br>
+            </div>
 
             <input type="submit" value="Submit Rental Info">
         </form>
