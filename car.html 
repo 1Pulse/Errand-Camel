@@ -160,7 +160,7 @@ imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.c
                 const car = carsData.find(car => car.id == carId);
 
                 // Populate car details
-                document.getElementById('modal-car-image').src = "https://via.placeholder.com/400x200"; // Add an actual image URL or placeholder
+               document.getElementById('modal-car-image').src = car.imageUrl;  // Set the car image URL 
                 document.getElementById('modal-car-name').textContent = car.name;
                 document.getElementById('modal-car-description').textContent = car.description;
                 document.getElementById('rental-fee-breakdown').innerHTML = `
