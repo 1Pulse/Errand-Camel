@@ -128,7 +128,8 @@
                 deposit: 3000,
                 freeKilometers: 200,
                 ratePerHour: 350,
-                insurancePerDay: 40
+                insurancePerDay: 40, 
+imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F39%2Fb7%2F52%2F39b752efca78f2236cef542c316a5b3a.jpg&f=1&nofb=1&ipt=aaa9304d" // Example 
             },
             {
                 id: 2,
@@ -142,7 +143,8 @@
                 deposit: 5000,
                 freeKilometers: 150,
                 ratePerHour: 400,
-                insurancePerDay: 50
+                insurancePerDay: 50,
+    imageUrl: "http://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F39%2Fb7%2F52%2F39b752efca78f2236cef542c316a5b3a.jpg&f=1&nofb=1&ipt=aaa9304d" // Example   
             }
             // Add more car data as needed
         ];
