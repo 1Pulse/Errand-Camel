@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental Form</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<style>
+
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+h3 {
+  font-size: 18px;
+  color: #444;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+.consent {
+  margin-top: 15px;
+}
+
+.consent label {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+</style>
+  <div class="container">
+    <h1>Car Rental Booking</h1>
+    <div class="renter-info">
+      <h2>Renter Information</h2>
+      <form id="renterForm">
+        <div class="form-group">
+          <label for="firstName">First Name*</label>
+          <input type="text" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name*</label>
+          <input type="text" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email*</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber">
+        </div>
+
+        <h2>Pickup / Return</h2>
+        <div class="pickup-return">
+          <h3>Pickup</h3>
+          <p>Johannesburg (Sandton)</p>
+          <p>40 14th Street, Marlboro Sandton</p>
+          <p>Friday 20 Dec 2024 @ 9:00 AM</p>
+        </div>
+        <div class="pickup-return">
+          <h3>Return</h3>
+          <p>Johannesburg (Sandton)</p>
+          <p>40 14th Street, Marlboro Sandton</p>
+          <p>Sunday 29 Dec 2024 @ 9:00 AM</p>
+        </div>
+
+        <h2>Vehicle Details</h2>
+        <p><strong>VW Polo Vivo (Manual) or similar</strong></p>
+        <p>Group B+ | 5 Passengers | Aircon | 5 Doors</p>
+
+        <h2>Rental Rate Breakdown</h2>
+        <ul>
+          <li>Rental Rate (9 days): ZAR 4,446.00</li>
+          <li>Automatic Super Cover and Theft Waivers: ZAR 180.00</li>
+          <li>Contract Fee: ZAR 130.00</li>
+          <li>Total Rental Payable (Excl. Refundable Deposit): ZAR 4,756.00</li>
+          <li>Damage Liability (Refundable Security Deposit): ZAR 4,500.00</li>
+          <li>Free km per day: 200 km | Excess km charges: ZAR 3.70 per km</li>
+        </ul>
+
+        <h2>Flight Information</h2>
+        <div class="form-group">
+          <label for="isFlying">I'm not flying in</label>
+          <input type="checkbox" id="isFlying" name="isFlying">
+        </div>
+        <div class="form-group" id="flightDetails" style="display: none;">
+          <label for="airlineCode">Airline Code</label>
+          <input type="text" id="airlineCode" name="airlineCode">
+        </div>
+        <div class="form-group" id="flightNumber" style="display: none;">
+          <label for="flightNumber">Flight Number</label>
+          <input type="text" id="flightNumber" name="flightNumber">
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I hereby accept Pace Car Rental’s Terms & Conditions</label>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="verify" required>
+          <label for="verify">I hereby give consent for Pace Car Rental to verify my details via relevant data providers</label>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="marketing" required>
+          <label for="marketing">I hereby allow Pace Car Rental to send me marketing communication</label>
+        </div>
+
+        <button type="submit" id="submitBtn">Book Vehicle</button>
+        <button type="button" id="quoteBtn">Email Me Quote</button>
+      </form>
+    </div>
+  </div>
+ <script>
+document.getElementById('isFlying').addEventListener('change', function () {
+  const flightDetails = document.getElementById('flightDetails');
+  const flightNumber = document.getElementById('flightNumber');
+  
+  if (this.checked) {
+    flightDetails.style.display = 'none';
+    flightNumber.style.display = 'none';
+  } else {
+    flightDetails.style.display = 'block';
+    flightNumber.style.display = 'block';
+  }
+});
+
+document.getElementById('renterForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  alert('Thank you for booking with Pace Car Rental!');
+});
+
+document.getElementById('quoteBtn').addEventListener('click', function () {
+  alert('Your quote has been sent to your email!');
+});
+
+</script>
+</body>
+</html>
