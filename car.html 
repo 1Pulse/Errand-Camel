@@ -57,6 +57,7 @@
 </head>
 <body>
     <button class="view-details" data-id="1">View Car Details</button>
+    <button class="view-details" data-id="2">View Car Details</button>
 
     <!-- Modal -->
     <div id="car-modal" class="modal">
@@ -78,8 +79,8 @@
 
                 <label for="coverage">Coverage:</label>
                 <select id="coverage">
-                    <option value="250">Minimum Coverage (R250)</option>
-                    <option value="800">Maximum Coverage (R800)</option>
+                    <option value="150">Minimum Coverage (R150)</option>
+                    <option value="200">Maximum Coverage (R200)</option>
                 </select>
 
                 <button id="calculate-btn">Calculate</button>
@@ -113,22 +114,37 @@
     </div>
 
     <script>
-        // Sample car data
+        // Sample data for cars
         const carsData = [
             {
                 id: 1,
                 name: "Toyota Corolla",
-                description: "A comfortable and fuel-efficient car.",
-                imageUrl: "https://via.placeholder.com/400x200",
-                rentalRate: 500,
-                insuranceWaiver: 250,
-                contractFee: 100,
-                adminFee: 50,
-                deposit: 1000,
+                description: "Comfortable, reliable, and fuel-efficient car perfect for city driving.",
+                pickupLocation: "Johannesburg",
+                rentalRate: 450,
+                insuranceWaiver: 150,
+                contractFee: 200,
+                adminFee: 130,
+                deposit: 3000,
                 freeKilometers: 200,
-                ratePerHour: 50,
-                insurancePerDay: 100
+                ratePerHour: 350,
+                insurancePerDay: 40
+            },
+            {
+                id: 2,
+                name: "Ford Ranger",
+                description: "Powerful and robust pickup truck, ideal for off-road adventures.",
+                pickupLocation: "Pretoria",
+                rentalRate: 600,
+                insuranceWaiver: 200,
+                contractFee: 250,
+                adminFee: 150,
+                deposit: 5000,
+                freeKilometers: 150,
+                ratePerHour: 400,
+                insurancePerDay: 50
             }
+            // Add more car data as needed
         ];
 
         const modal = document.getElementById('car-modal');
@@ -140,7 +156,7 @@
                 const car = carsData.find(car => car.id == carId);
 
                 // Populate car details
-                document.getElementById('modal-car-image').src = car.imageUrl;
+                document.getElementById('modal-car-image').src = "https://via.placeholder.com/400x200"; // Add an actual image URL or placeholder
                 document.getElementById('modal-car-name').textContent = car.name;
                 document.getElementById('modal-car-description').textContent = car.description;
                 document.getElementById('rental-fee-breakdown').innerHTML = `
