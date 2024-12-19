@@ -25,7 +25,6 @@
         </form>
     </div>
 
-
     <script>
         // Sample data for cars, including image URLs
         const carsData = [
@@ -62,18 +61,45 @@
             // Add more car data as needed
         ];
 
+        // Populating the car details into the container
+        const carDetailsContainer = document.querySelector('.car-details-container');
 
-carsData.forEach(car => {
-    const carElement = document.createElement('div');
-    carElement.classList.add('car-item');
-    carElement.innerHTML = `
-        <img src="${car.imageUrl}" alt="${car.name}">
-        <h3>${car.name}</h3>
-        <p>${car.description}</p>
-        <button class="view-details" data-id="${car.id}">View Details</button>
-    `;
-    document.querySelector('.gallery-container').appendChild(carElement);
-});
+        carsData.forEach(car => {
+            const carElement = document.createElement('div');
+            carElement.classList.add('car-item');
+            carElement.innerHTML = `
+                <img src="${car.imageUrl}" alt="${car.name}">
+                <h3>${car.name}</h3>
+                <p>${car.description}</p>
+                <p>Pickup Location: ${car.pickupLocation}</p>
+                <p>Rental Rate: $${car.rentalRate}/day</p>
+                <button class="view-details" data-id="${car.id}">View Details</button>
+            `;
+            carDetailsContainer.appendChild(carElement);
+        });
+
+        // Handling the View Details button click event
+        document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', function () {
+                const carId = this.getAttribute('data-id');
+                const car = carsData.find(car => car.id == carId);
+                alert(`Car ID: ${car.id}\nName: ${car.name}\nDescription: ${car.description}`);
+                // You can also display a modal or another page to show full details here
+            });
+        });
+
+        // Form submission handler
+        const form = document.getElementById('car-booking-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent page reload
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            alert(`Booking Details: ${JSON.stringify(data)}`);
+            // You can process the booking here (e.g., send data to a server)
+        });
 
     </script>
 </body>
