@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental - VW Polo Vivo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 32px;
+    color: #333;
+}
+
+.group {
+    font-size: 18px;
+    color: #555;
+}
+
+.pricing p {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.important-notes {
+    font-size: 14px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+}
+
+</style>
+    <div class="container">
+        <h1>VW Polo Vivo (Manual)</h1>
+        <p class="group">Group B+ | 5 Passengers | Manual | Aircon | 5 Doors | + More Details</p>
+
+        <div class="pricing">
+            <p><strong>ZAR 4,442.62</strong> (Pay Now - Discounted Rate)</p>
+            <p><strong>ZAR 4,576.00</strong> (Pay Later / Get a Quote)</p>
+        </div>
+
+        <p class="important-notes">
+            A double deposit is required if the payment method is not a credit card.<br>
+            No cancellation fees.<br>
+            The discounted rate is available for prepaid bookings only. Card details are required to secure the reservation.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="breakdown.html" class="cta-button">Pay Now - Discounted Rate</a>
+            <a href="breakdown.html" class="cta-button">Pay Later/Get a Quote</a>
+        </div>
+    </div>
+</body>
+</html>
